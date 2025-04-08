@@ -1,0 +1,9 @@
+package Lesson04;
+
+public class OptEx2_4 {
+	public static void main(String[] args) {
+		System.out.println("Activation");
+		System.out.println(3/0d);
+		System.out.println("End");
+	}
+}

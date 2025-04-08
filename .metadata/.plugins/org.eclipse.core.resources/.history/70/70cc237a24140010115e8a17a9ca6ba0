@@ -1,0 +1,11 @@
+package chapter1;
+
+public class Literal {
+	public static void main(String[] args) {
+		String greet = "Hello, \nI am\ "Nameless\"".";
+		String greet2 = "\tGreetings";
+		
+		System.out.println(greet);
+		System.out.println(greet2);
+	}
+}

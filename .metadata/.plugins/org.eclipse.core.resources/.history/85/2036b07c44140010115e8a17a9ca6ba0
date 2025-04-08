@@ -1,0 +1,33 @@
+package Lesson04;
+
+public class OpEx2_3 {
+	public static void main(String[] args) {
+		int a = 10;
+		int b = 5;
+		System.out.println(a > b);
+		System.out.println(a >= b);
+		System.out.println(a < b);
+		System.out.println(a <= b);
+		System.out.println(a == b);
+		System.out.println(a != b);
+
+		boolean c = a == b;
+		System.out.println("c : " + c);
+		boolean d = !c;
+		System.out.println("d : " + d);
+		//가힣 
+		
+		System.out.println('힣' - '가' + 1);
+		System.out.println(('힣' - '가' + 1) / 19);
+		
+		// AND : ONLY TRUE WHEN BOTH OR TRUE
+		// OR : ONLY FALSE WHEN BOTH ARE FALSE
+		
+		//boolean e
+		//the sum of 'a' is a positive integer but smaller than 20?
+		
+		//boolean e = a > 0 && a < 20;
+		boolean e = a % 2 == 1 || a % 5 ==0;
+		System.out.println(e);
+	}	
+}
