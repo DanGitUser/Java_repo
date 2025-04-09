@@ -4,5 +4,5 @@
 /**
  * 
  */
-module Quiz2 {
+module Quiz02 {
 }

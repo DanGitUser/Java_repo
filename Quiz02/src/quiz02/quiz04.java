@@ -1,7 +1,7 @@
-package quiz2;
+package quiz02;
 
 import java.util.Scanner;
-// MONEY BREAKER 9000
+//MONEY BREAKER 9000
 public class quiz04 {
 	public static void main(String[] args) {
 		System.out.print("Enter Value of Cash to break :");
