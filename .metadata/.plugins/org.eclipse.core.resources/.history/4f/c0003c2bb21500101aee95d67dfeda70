@@ -1,0 +1,26 @@
+package quiz02;
+
+import java.util.Scanner;
+
+public class quiz08 {
+	public static void main(String[] args) {
+		Scanner scan = new Scanner(System.in);
+		System.out.print("Input Number :");
+		int input = scan.nextInt();
+		boolean 삼의배수 = input % 3 ==0;
+		boolean 짝수 = input % 2 == 0;
+		
+		if (삼의배수 && 짝수) {
+			System.out.println("삼의배수 & 짝수");
+		}
+		else if (삼의배수){
+			System.out.println("삼의배수");
+		}
+		else if (짝수) {
+			System.out.println("짝수");
+		}
+		else {
+			System.out.println("nothing");
+		}
+	}
+}

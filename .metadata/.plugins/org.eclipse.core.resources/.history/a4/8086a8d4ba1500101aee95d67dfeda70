@@ -1,0 +1,16 @@
+package lesson;
+
+public class lesson05_10 {
+	public static void main(String[] args) {
+		
+		int sum = 0;
+		
+		for (int i=1; i<=100; i++) {
+			sum += i;
+			i++;
+			i++;
+			System.out.printf("i : %3d, sum : %4d\n", i , sum);
+		}		
+		System.out.println("pass :"+sum);
+	}
+}

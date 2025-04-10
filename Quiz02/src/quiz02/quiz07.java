@@ -5,9 +5,8 @@ import java.util.Scanner;
 
 public class quiz07 {
 	public static void main(String[] args) {
-		
-		System.out.print("Input Month of Year (1~12): ");
 		Scanner scan = new Scanner(System.in);
+		System.out.print("Input Month of Year (1~12): ");
 		
 		int month = scan.nextInt();        
         switch (month) {

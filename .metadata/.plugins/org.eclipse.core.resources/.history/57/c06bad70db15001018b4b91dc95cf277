@@ -1,0 +1,11 @@
+package lesson;
+
+public class han {
+	public static void main(String[] args) {
+		//number of korean char
+		System.out.println('힣' - '가' + 1); //11172
+		
+		//초성당 글자 갯수
+		System.out.println('힣' - '하' + 1); // 588
+	}
+}
