@@ -1,0 +1,12 @@
+package lesson;
+
+import java.util.Scanner;
+
+public class lesson05_6 {
+	public static void main(String[] args) {
+		
+		System.out.println("Input Score");
+		Scanner scan = new Scanner(System.in;)
+				
+	}
+}

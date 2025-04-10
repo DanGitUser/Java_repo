@@ -1,0 +1,16 @@
+package lesson;
+
+import java.util.Scanner;
+
+public class lesson05_01 {
+	public static void main(String[] args) {
+		// Console Input is hard
+		Scanner scanner = new Scanner(System.in);
+		int score = 10;
+		System.out.println("Test Start");
+		if (score >= 60) {
+			System.out.println("You Passed");
+		}
+		System.out.println("End of Test");
+	}
+}

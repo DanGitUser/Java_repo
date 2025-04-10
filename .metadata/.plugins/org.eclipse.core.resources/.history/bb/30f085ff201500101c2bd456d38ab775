@@ -1,0 +1,10 @@
+package quiz2;
+
+public class quiz04 {
+	public static void main(String[] args) {
+		int price = 187000;
+		int oman = ((price /10000) * 10000) / 50000;
+		int ilman = 
+		System.out.println("5 만 : "+oman+"장");		
+	}
+}
