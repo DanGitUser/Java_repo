@@ -10,7 +10,7 @@ public class ShuffleEx {
 		}
 		
 		for(int i = 0 ; i < arr.length ; i++) {
-			int idx = (int)(Math.random() * 45); //0 ~ 44
+			int idx = (int)(Math.random() * 100); //0 ~ 44
 			int tmp = arr[i];
 			arr[i] = arr[idx];
 			arr[idx] = tmp;

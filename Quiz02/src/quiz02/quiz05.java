@@ -8,6 +8,8 @@ public class quiz05 {
 		Scanner scan = new Scanner(System.in);
 		int number = scan.nextInt();
 		int result = number - number % 100;
+		
+		
 		System.out.println(result);
 				
 	}

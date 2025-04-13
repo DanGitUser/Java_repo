@@ -10,6 +10,8 @@ public class lesson05_8 {
 			if (str1 == str2) {
 				System.out.println("They are the same");
 			}
+			else
+				System.out.println("they are not the same");
 		// 문자열 비교
 			// str.equals(str2)
 			//if (str1 == str2) {

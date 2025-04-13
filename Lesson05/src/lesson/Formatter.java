@@ -36,10 +36,10 @@ public class Formatter {
 		
 		System.out.println(result);
 		
-		for(int i = '가' ; i < '까' ; i++) {
+		for(int i = 'a' ; i < 'z'+1 ; i++) {
 			System.out.print((char)i);
 		}
-		for(int i = '가' ; i < '까' ; i++) {
+		for(int i = 'A' ; i < 'Z'+1 ; i++) {
 			System.out.print((char)i);
 		}
 		//unicode 기반의 한글, 초성 19게
