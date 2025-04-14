@@ -1,3 +1,4 @@
-2025/04/13-19:56:36.765 27c4 Reusing MANIFEST D:\Repository\dan-workspace\.metadata\.plugins\org.eclipse.swt\EBWebView\Default\Local Storage\leveldb/MANIFEST-000001
-2025/04/13-19:56:36.778 27c4 Recovering log #3
-2025/04/13-19:56:36.780 27c4 Reusing old log D:\Repository\dan-workspace\.metadata\.plugins\org.eclipse.swt\EBWebView\Default\Local Storage\leveldb/000003.log 
+2025/04/14-09:03:14.558 257c Creating DB C:\Users\TJ\dan-workspace\.metadata\.plugins\org.eclipse.swt\EBWebView\Default\Local Storage\leveldb since it was missing.
+2025/04/14-09:03:14.592 257c Reusing MANIFEST C:\Users\TJ\dan-workspace\.metadata\.plugins\org.eclipse.swt\EBWebView\Default\Local Storage\leveldb/MANIFEST-000001
+2025/04/14-09:03:14.593 257c Recovering log #3
+2025/04/14-09:03:14.595 257c Reusing old log C:\Users\TJ\dan-workspace\.metadata\.plugins\org.eclipse.swt\EBWebView\Default\Local Storage\leveldb/000003.log 

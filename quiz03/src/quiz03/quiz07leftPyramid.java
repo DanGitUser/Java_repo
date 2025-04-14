@@ -2,14 +2,16 @@ package quiz03;
 
 public class quiz07leftPyramid {
 	public static void main(String[] args) {
-        int height = 5;
-
-        for (int i = 1; i <= height; i++) {
-            for (int j = height; j > i; j--) {
-                System.out.print(" ");
-            }
-            for (int j = 1; j <= i; j++) {
-                System.out.print("*");
+		
+		int range = 5;
+        for (int i = 0; i < range; i++) {
+            for (int j = 0; j < range; j++) {
+            	if(i + j >= 4) {
+            		System.out.printf("*", i, j);
+            	}
+            	else {
+            		System.out.printf("%c", ' ');
+            	}
             }
             System.out.println();
         }

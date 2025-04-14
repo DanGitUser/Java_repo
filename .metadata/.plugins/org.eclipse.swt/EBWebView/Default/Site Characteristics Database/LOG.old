@@ -1,3 +1,2 @@
-2025/04/13-19:56:36.692 4e5c Reusing MANIFEST D:\Repository\dan-workspace\.metadata\.plugins\org.eclipse.swt\EBWebView\Default\Site Characteristics Database/MANIFEST-000001
-2025/04/13-19:56:36.694 4e5c Recovering log #10
-2025/04/13-19:56:36.695 4e5c Reusing old log D:\Repository\dan-workspace\.metadata\.plugins\org.eclipse.swt\EBWebView\Default\Site Characteristics Database/000010.log 
+2025/04/14-09:03:14.500 3008 Creating DB C:\Users\TJ\dan-workspace\.metadata\.plugins\org.eclipse.swt\EBWebView\Default\Site Characteristics Database since it was missing.
+2025/04/14-09:03:14.512 3008 Reusing MANIFEST C:\Users\TJ\dan-workspace\.metadata\.plugins\org.eclipse.swt\EBWebView\Default\Site Characteristics Database/MANIFEST-000001

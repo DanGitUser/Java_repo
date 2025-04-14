@@ -1,9 +1,0 @@
-package Lesson04;
-
-public class OptEx3 {
-	public static void main(String[] args) {
-		int score = 80;
-		String pass = score >= 60 ? "Pass" : "Fail";
-		System.out.println(pass);
-	}
-}

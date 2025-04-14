@@ -1,3 +1,4 @@
-2025/04/13-20:01:08.817 27c4 Reusing MANIFEST D:\Repository\dan-workspace\.metadata\.plugins\org.eclipse.swt\EBWebView\Default\Session Storage/MANIFEST-000001
-2025/04/13-20:01:08.818 27c4 Recovering log #3
-2025/04/13-20:01:08.821 27c4 Reusing old log D:\Repository\dan-workspace\.metadata\.plugins\org.eclipse.swt\EBWebView\Default\Session Storage/000003.log 
+2025/04/14-09:03:15.575 257c Creating DB C:\Users\TJ\dan-workspace\.metadata\.plugins\org.eclipse.swt\EBWebView\Default\Session Storage since it was missing.
+2025/04/14-09:03:15.586 257c Reusing MANIFEST C:\Users\TJ\dan-workspace\.metadata\.plugins\org.eclipse.swt\EBWebView\Default\Session Storage/MANIFEST-000001
+2025/04/14-09:03:15.586 257c Recovering log #3
+2025/04/14-09:03:15.588 257c Reusing old log C:\Users\TJ\dan-workspace\.metadata\.plugins\org.eclipse.swt\EBWebView\Default\Session Storage/000003.log 
