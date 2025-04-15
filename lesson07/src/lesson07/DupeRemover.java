@@ -9,25 +9,25 @@ public class DupeRemover {
 		
         int[] nums = new int[50];
         int[] uniq = new int[50];
-        int uCount = 0;
+        int length = 0;
 
         for (int i = 0; i < 50; i++) {
             int num = (int) (Math.random() * 20) + 1;
             nums[i] = num;
 
             boolean dupe = false;
-            for (int j = 0; j < uCount; j++) {
+            for (int j = 0; j < length; j++) {
                 if (num == uniq[j]) {
                     dupe = true;
                     break;
                 }
             }
             if (!dupe) {
-                uniq[uCount++] = num;
+                uniq[length++] = num;
             }
         }
 
         System.out.println("Random numbers: " + Arrays.toString(nums));
-        System.out.println("Unique numbers: " + Arrays.toString(Arrays.copyOf(uniq, uCount)));
+        System.out.println("Unique numbers: " + Arrays.toString(Arrays.copyOf(uniq, length)));
     }
 }
