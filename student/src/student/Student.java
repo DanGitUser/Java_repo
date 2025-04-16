@@ -7,27 +7,33 @@ public class Student {
 	// 기본생성자 + (학번,이름), (다섯개의필드를 다 사용)
 	
 	int no;
+	String name;
+	String department;
+	
 	int kor;
 	int eng;
 	int mat;
 	
-	String name;
-	String department;
-	
 	Student() {}
 	
+	Student(int no, String name) {
+		this.no = no;
+		this.name = name;		
+	}
+	
 	Student(int no, String name, String department, int kor, int eng, int mat) {
-        this.no = no;
-        this.name = name;
+		this(no, name);
         this.department = department;
-        
         this.kor = kor;
         this.eng = eng;
-        this.mat = mat;
-        
+        this.mat = mat;     
+	}
+	int total() {
+		return kor + eng + mat;
 	}
         public void info() {
-            System.out.println("학번: \n" + no + ", 이름: \n" + name + ", 학과: \n" + department + 
-                               ", 국어: " + kor + ", 영어: " + eng + ", 수학: " + mat);
+            System.out.println("학번: " + no + ", 이름: " + name + ", 학과: " + department + 
+                               "\n국어: " + kor + ", 영어: " + eng + ", 수학: " + mat + 
+                               "\n점수합 :" + total());
         }
     }
