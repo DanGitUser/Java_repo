@@ -2,7 +2,7 @@ package lesson;
 
 import java.util.Arrays;
 
-public class Lotoo {
+public class Lotto {
 	public static void main(String[] args) {
 		int[] lotto = new int[10];
 		int idx = 0;
@@ -26,7 +26,7 @@ public class Lotoo {
 		}
 		int[] arr = lotto;
 		for(int i = 0 ; i < arr.length -1 ; i++) {
-			System.out.println("run number " + (i + 1));
+//			System.out.println("run number " + (i + 1));
 			for(int j = 0 ; j < arr.length -1 -i ; j++) {
 				if(arr[j] > arr[j+1]) {
 					int tmp = arr[j];

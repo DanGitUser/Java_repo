@@ -26,8 +26,8 @@ public class Student {
 		return kor + eng + mat;
 	}
 	// 평균 계산 double type
-	int avg() {
-		return (kor + eng + mat) / 3;
+	double avg() {
+		return (kor + eng + mat) / 3d;
 	}
 	
 }

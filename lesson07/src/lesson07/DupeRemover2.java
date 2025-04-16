@@ -7,13 +7,13 @@ import java.util.Arrays;
 public class DupeRemover2 {
 	public static void main(String[] args) {
 		
-        int[] arr = new int[50];
+        int[] arr = new int[5];
         for (int i = 0; i < arr.length; i++) {
-			arr[i] = (int)(Math.random() * 20 + 1);
+			arr[i] = (int)(Math.random() * 3 + 1);
 		}
         System.out.println(Arrays.toString(arr));
         
-        int[] tmp = new int[20];
+        int[] tmp = new int[3];
         int length = 0;
         
         for( int n : arr) {
@@ -29,7 +29,8 @@ public class DupeRemover2 {
         	}	
         }
         System.out.println(Arrays.toString(tmp));
-        Arrays.copyOf(tmp, length);
-        System.out.println(Arrays.toString(tmp));
+        tmp = Arrays.copyOf(tmp, length);
+        arr = tmp;
+        System.out.println(Arrays.toString(arr));
     }
 }

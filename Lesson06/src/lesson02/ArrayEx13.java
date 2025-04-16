@@ -17,7 +17,7 @@ public class ArrayEx13 {
 //			tmp[i] = arr[i];
 //		}
 		//               this v changes from which int the copy is going to start.
-		System.arraycopy(arr, 4, tmp, 5, 1); //<- this number changes the amount to be copied
+		System.arraycopy(arr, 1 + 1, tmp, 3, 2 - 1 ); //<- this number changes the amount to be copied
 		//                this number ^ shifts the integers in arr to begin from index 2
 		//참조값 복사
  		arr = tmp;
