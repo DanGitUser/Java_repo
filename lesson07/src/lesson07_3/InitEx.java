@@ -20,5 +20,6 @@ public class InitEx {
 		new InitEx();
 		System.out.println("main init 2 class construction");
 		new InitEx();
+		System.gc();
 	}
 }
