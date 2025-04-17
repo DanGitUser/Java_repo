@@ -1,7 +1,5 @@
 package lesson08.shape;
 
-import java.util.Iterator;
-
 public class Main {
 	public static void main(String[] args) {
 		Circle circle = new Circle(3);
@@ -11,6 +9,8 @@ public class Main {
 		Rect rect = new Rect(4, 5);
 //		System.out.println(rect.area());//Area
 //		System.out.println(rect.circum());//Circumference
+		
+
 		
 		Shape[] shapes = {circle, rect};
 		

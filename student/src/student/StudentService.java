@@ -1,6 +1,6 @@
 package student;
 
-import java.util.Iterator;
+import java.util.Arrays;
 
 public class StudentService {
 	Student[] students = new Student[2];
@@ -12,19 +12,16 @@ public class StudentService {
 	// 등록
 	void register() {
 		System.out.println("등록 기능");
-        if (count >= students.length) {
-            Student[] newStudents = new Student[students.length * 2];
-            System.arraycopy(students, 0, newStudents, 0, students.length);
-            students = newStudents;
-        }
 		// 학생 생성
 		// 학번, 이름, 국어, 영어, 수학
 		int no = StudentUtils.nextInt("학번 > ");
 		String name = StudentUtils.nextLine("이름 > ");
-		
 		int kor = StudentUtils.nextInt("국어 > ");
 		int eng = StudentUtils.nextInt("영어 > ");
 		int mat = StudentUtils.nextInt("수학 > ");
+		if(students.length == count) {
+			students = Arrays.copyOf(students, students.length * 2);
+		}
 		students[count++] = new Student(no, name, kor, eng, mat);
 	}
 	// 조회
@@ -57,12 +54,7 @@ public class StudentService {
 		int no = StudentUtils.nextInt("삭제할 학번 > ");
 		for (int i = 0; i < count; i++) {
 			if (students[i].no == no ) {
-				System.arraycopy(students, i + 1, students, i, count - i - 1);
-//		         for (int j = i; j < count - 1; j++) {
-//					students[j] = students[j + 1];
-//				}
-		         students[count - 1] = null; 
-		            count--;
+				System.arraycopy(students, i + 1, students, i, count-- - 1 - i);
 		            System.out.println("삭제되었습니다.");
 		            return;
 		        }
@@ -70,3 +62,8 @@ public class StudentService {
 		    System.out.println("해당 학번의 학생을 찾을 수 없습니다.");
 	}
 }
+
+// 1. Prevent duplicate student ID
+// 2. find the average between all grade types + average between all grades.
+// 3. Sort by best grade (overall)
+// 4. Student Class -> toString re write //상속 마지막
