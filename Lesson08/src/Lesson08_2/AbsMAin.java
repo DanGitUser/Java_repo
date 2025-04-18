@@ -1,4 +1,4 @@
-package lesson08.shape;
+package Lesson08_2;
 
 public class AbsMAin {
 	public static void main(String[] args) {

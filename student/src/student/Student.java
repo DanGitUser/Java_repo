@@ -30,8 +30,7 @@ public class Student {
         return total() / 3d;
     }
 
-    @Override
     public String toString() {
-        return String.format("학번: %d, 이름: %s, 점수합: %d, 평균: %.2f", no, name, total(), avg());
+        return String.format("%5d %5s %5d %5d %5d %6.2f %5d", no, name, kor, eng, mat, avg(), total());
     }
 }
