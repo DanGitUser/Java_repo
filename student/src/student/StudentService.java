@@ -12,18 +12,21 @@ public class StudentService {
 	// 도형 과제 추가
 	// 삼각형, 3차원도형 추가 구현
 	
-	Student[] students = new Student[4];
-	Student[] sortedStudents = new Student[students.length];
-	int count;
+	private	Student[] students = new Student[4];
+	private	Student[] sortedStudents = new Student[students.length];
+	private	int count;
 
 	{
-		students[count++] = new Student(1, "개똥이", StudentUtils.randomScore(), StudentUtils.randomScore(), StudentUtils.randomScore());
-		students[count++] = new Student(2, "새똥이", StudentUtils.randomScore(), StudentUtils.randomScore(), StudentUtils.randomScore());
-		students[count++] = new Student(3, "말똥이", StudentUtils.randomScore(), StudentUtils.randomScore(), StudentUtils.randomScore());
-		students[count++] = new Student(4, "소똥이", StudentUtils.randomScore(), StudentUtils.randomScore(), StudentUtils.randomScore());
+		students[count++] = new Student(1, "개똥이", randomScore(), randomScore(), randomScore());
+		students[count++] = new Student(2, "새똥이", randomScore(), randomScore(), randomScore());
+		students[count++] = new Student(3, "말똥이", randomScore(), randomScore(), randomScore());
+		students[count++] = new Student(4, "소똥이", randomScore(), randomScore(), randomScore());
 		
 		sortedStudents = students.clone();
 		rank();
+	}
+	public int randomScore() {
+		return (int)(Math.random() * 41 + 60);
 	}
 	
 	
@@ -39,6 +42,15 @@ public class StudentService {
 		}
 		return student;
 	}
+	public int checkRange(String subject, int input, int start, int end) {
+		if (input < start || input > end) {
+			throw new IllegalArgumentException(subject + "0 ~ 100 사이");
+		}
+		return input;
+	}
+	public int checkRange(String subject, int input) {
+		return checkRange(subject, input, 0, 100) ;
+	}
 	
 	// 등록
 	public void register() {
@@ -52,10 +64,14 @@ public class StudentService {
 			return;
 		}
 		
-		String name = StudentUtils.inputName("이름 > ");
-		int kor = StudentUtils.inputScore("국어 > ");
-		int eng = StudentUtils.inputScore("영어 > ");
-		int mat = StudentUtils.inputScore("수학 > ");
+		String name = inputName();
+		
+		int kor = StudentUtils.nextInt("국어 > ");
+		checkRange("국어", kor);
+		int eng = StudentUtils.nextInt("영어 > ");
+		checkRange("영어", eng);
+		int mat = StudentUtils.nextInt("수학 > ");
+		checkRange("수학", mat);
 		if(students.length == count) {
 			students = Arrays.copyOf(students, students.length * 2);
 		}
@@ -79,6 +95,19 @@ public class StudentService {
 		}
 	}
 	
+	public String inputName() {
+		String name = StudentUtils.nextLine("이름 > ");
+		if (name.length() < 2 || name.length() > 4) {
+			throw new IllegalArgumentException("2 ~ 4 글짜");
+		}
+		for (int i = 0; i < name.length(); i++) {
+			if(name.charAt(i) < '가' || name.charAt(i)> '힣') {
+				throw new IllegalArgumentException("한글만");
+			}
+		}
+		return name;
+	}
+	
 	// 수정
 	public void modify() {
 		System.out.println("수정 기능");
@@ -89,10 +118,11 @@ public class StudentService {
 			System.out.println("입력된 학번이 존재하지 않습니다");
 			return;
 		}
-		s.setName(StudentUtils.inputName("이름 > "));
-		s.setKor(StudentUtils.inputScore("국어 > "));
-		s.setEng(StudentUtils.inputScore("영어 > "));
-		s.setMat(StudentUtils.inputScore("수학 > "));
+		String name = StudentUtils.nextLine("이름 > ");
+		s.setName(name);
+		s.setKor(checkRange("국어", StudentUtils.nextInt("국어 > ")));
+		s.setEng(checkRange("영어", StudentUtils.nextInt("영어 > ")));
+		s.setMat(checkRange("수학", StudentUtils.nextInt("수학 > ")));
 		sortedStudents = Arrays.copyOf(students, students.length);
 		rank();	
 	}
@@ -149,7 +179,7 @@ public class StudentService {
 		
 	}
 	
-	void rank() {
+	public void rank() {
 		
 		for(int i = 0 ; i < count - 1; i++ ) {
 			int idx = i;

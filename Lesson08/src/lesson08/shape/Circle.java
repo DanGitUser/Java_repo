@@ -1,6 +1,6 @@
 package lesson08.shape;
 
-public class Circle extends Shape {
+public class Circle extends Shape implements Shape2D {
 	int r;
 	public Circle() {}
 	public Circle(int r) {
@@ -12,4 +12,7 @@ public class Circle extends Shape {
 	public double area() {
 		return r * r * Math.PI;
 	}
+	public String toString() {
+		return super.toString() + "\nCircum : " + circum()
+;	}
 }

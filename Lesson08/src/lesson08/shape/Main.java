@@ -10,14 +10,21 @@ public class Main {
 //		System.out.println(rect.area());//Area
 //		System.out.println(rect.circum());//Circumference
 		
-
+		Cylinder cylinder = new Cylinder(new Circle(4), 5);
 		
-		Shape[] shapes = {circle, rect};
+		Shape[] shapes = {circle, rect, cylinder};
 		
 		for (int i = 0; i < shapes.length; i++) {
 			System.out.println("===" + shapes[i].getClass().getSimpleName() + "===");
-			System.out.println(shapes[i].area());;
-			System.out.println(shapes[i].circum());;
+			System.out.println("Width : " + shapes[i].area());;
+			if (shapes[i] instanceof Shape2D) {
+				System.out.println("Circumfirence : " + ((Shape2D)shapes[i]).circum());
+			}
+			else if (shapes[i] instanceof Shape3D) {
+				System.out.println("Volume : " + ((Shape3D)shapes[i]).volume());
+			}
+//			System.out.println(shapes[i].circum());;
 		}
+		System.out.println("=================");
 	}
 }

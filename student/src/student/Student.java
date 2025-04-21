@@ -1,6 +1,10 @@
 package student;
 
 public class Student {
+	//How to use get and set
+	//1. field
+	//2. constructor
+	//3. getter / setter
     private int no;
     private String name;
     private int kor;
@@ -18,41 +22,41 @@ public class Student {
     public int getNo() {
         return no;
     }
-
     public String getName() {
         return name;
     }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public int total() {
-        return kor + eng + mat;
-    }
-
-    public double avg() { 
-    	return total() / 3.0; 
-    }
-
     public int getKor() { 
     	return kor; 
     }
     public int getEng() { 
     	return eng; 
-    	}
+    }
     public int getMat() { 
     	return mat; 
-    	}
+    }
+
+    public void setNo(int no) {
+    	this.no = no;
+    }
+    public void setName(String name) {
+        this.name = name;
+    }
     public void setKor(int kor) { 
     	this.kor = kor; 
-    	}
+    }
     public void setEng(int eng) { 
     	this.eng = eng; 
-    	}
+    }
     public void setMat(int mat) {
     	this.mat = mat; 
-    	}
+    }
+    
+    public int total() {
+    	return kor + eng + mat;
+    }
+    public double avg() { 
+    	return total() / 3.0; 
+    }
 
     @Override
     public String toString() {

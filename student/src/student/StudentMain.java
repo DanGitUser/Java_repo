@@ -35,9 +35,12 @@ public class StudentMain {
                         return;
                     default:
                         System.out.println("1 ~ 7 사이의 숫자를 입력");
+                        break;
                 }
-            } catch (Exception e) {
+            } catch (NumberFormatException e) {
                 System.out.println("잘못된 입력");
+            } catch (IllegalArgumentException e) {
+            	System.out.println("잘못된 입력");
             }
         }
     }
