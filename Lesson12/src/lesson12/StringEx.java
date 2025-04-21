@@ -1,6 +1,9 @@
 package lesson12;
 
 import java.io.File;
+import java.net.MulticastSocket;
+import java.util.Arrays;
+import java.util.Iterator;
 
 public class StringEx {
 	public static void main(String[] args) {
@@ -35,8 +38,30 @@ public class StringEx {
 			if(fileNames[i].startsWith("abcd"))
 				System.out.println(fileNames[i]);
 		}
-		File dir = new File("C:\\Users\\TJ\\dan-workspace");
-		System.out.println(dir.isFile());
-		System.out.println(dir.isDirectory());
+//		File dir = new File("C:\\Users\\TJ\\dan-workspace");
+//		System.out.println(dir.isFile());
+//		System.out.println(dir.isDirectory());
+//		
+//		String[] list = dir.list();
+//		for (String s : list) {
+//			if(!(s.startsWith("lesson") || s.startsWith("Lesson")))
+//			System.out.println(s);
+//		}
+		System.out.println("============");
+		
+		String[] strs = "123,456,789".split("2");
+		System.out.println(Arrays.toString(strs));
+		
+		String str3 = String.join("+",  strs);
+		System.out.println(str3);
+		
+		char[] chs = str.toCharArray();
+		for (int i = 0; i < chs.length; i++) {
+			System.out.print(chs[i]);
+		}
+		
+		String str2 = new String(chs);
+		System.out.println(str2);
+		
 	}
 }

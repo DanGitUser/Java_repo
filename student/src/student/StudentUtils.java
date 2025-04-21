@@ -12,8 +12,13 @@ public class StudentUtils {
 		return scanner.nextLine();
 	}
 	
-	static int nextInt(String msg) {
+	public static int nextInt(String msg) {
 		return Integer.parseInt(nextLine(msg));
+	}
+	
+	public static boolean nextConfirm(String msg) {
+		String s = nextLine(msg);
+		return s.equalsIgnoreCase("y") || s.equalsIgnoreCase("yes");
 	}
 	
 //	public static String inputName(String msg) {
