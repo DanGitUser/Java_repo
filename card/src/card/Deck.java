@@ -22,12 +22,12 @@ public class Deck {
 	}
 	
 	Deck shuffle() {
-//		for (int i = 0; i < cards.size(); i++) {
-//			int r = (int)(Math.random() * 52);
-//			Card tmp = cards.get(i);
-//			cards.set(i, cards.get(r));
-//			cards.set(r, tmp);
-//		}
+		for (int i = 0; i < cards.size(); i++) {
+			int r = (int)(Math.random() * 52);
+			Card tmp = cards.get(i);
+			cards.set(i, cards.get(r));
+			cards.set(r, tmp);
+		}
 		Collections.shuffle(cards);
 		return this;
 	}

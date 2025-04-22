@@ -10,7 +10,6 @@ public class StudentService {
 
 	private List<Student> students = new ArrayList<Student>();
 	private List<Student> sortedStudents = new ArrayList<Student>();
-	private int count;
 
 	{
 		students.add(new Student(1, "개똥이", randomScore(), randomScore(), randomScore()));
@@ -28,18 +27,18 @@ public class StudentService {
 
 	// 입력 : 학번
 	// 출력 : 학생
-    Student findBy(int no) { //what dad keeps saying
-        for (Student student : students) {
-            if (student.getNo() == no) {
-                return student;
-            }
-        }
-        return null;
-    }
+	Student findBy(int no) { // what dad keeps saying
+		for (Student student : students) {
+			if (student.getNo() == no) {
+				return student;
+			}
+		}
+		return null;
+	}
 
 	public int checkRange(String subject, int input, int start, int end) {
 		if (input < start || input > end) {
-			throw new IllegalArgumentException(subject + "0 ~ 100 사이");
+			throw new IllegalArgumentException(subject + " " + start + " ~ " + end + " 사이");
 		}
 		return input;
 	}
@@ -53,25 +52,20 @@ public class StudentService {
 		System.out.println("등록 기능");
 		int no = StudentUtils.nextInt("학번 > ");
 
-		Student s = findBy(no);
-
-		if (s != null) {
+		if (findBy(no) != null) {
 			System.out.println("중복된 학번이 존재합니다");
 			return;
 		}
 
 		String name = inputName();
 
-		int kor = StudentUtils.nextInt("국어 > ");
-		checkRange("국어", kor);
-		int eng = StudentUtils.nextInt("영어 > ");
-		checkRange("영어", eng);
-		int mat = StudentUtils.nextInt("수학 > ");
-		checkRange("수학", mat);
+		int kor = checkRange("국어", StudentUtils.nextInt("국어 > "));
+		int eng = checkRange("영어", StudentUtils.nextInt("영어 > "));
+		int mat = checkRange("수학", StudentUtils.nextInt("수학 > "));
 
-		students.add(new Student(no, name, kor, eng, mat));
-		count++;
-		sortedStudents.add(new Student(no, name, kor, eng, mat)); // Add to sorted list
+		Student newStudent = new Student(no, name, kor, eng, mat);
+		students.add(newStudent);
+		sortedStudents.add(newStudent);
 		rank();
 	}
 
@@ -87,25 +81,34 @@ public class StudentService {
 	}
 
 	public void print(List<Student> stu) {
-        for (Student student : stu) {
-            System.out.println(student);
-        }
-    }
-
+		for (Student student : stu) {
+			System.out.println(student);
+		}
+	}
 
 	// 이름 검증 문자열 체크를 정규표현식을 사용
 	public String inputName() {
 		String name = StudentUtils.nextLine("이름 > ");
-		String krChar = "[가-힣]*";
-		String nameLength = "[가-힣]{2,4}";
-		if (!(name.matches(krChar))) {
-			throw new IllegalArgumentException("한글만");
-		}
-		else if (!(name.matches(nameLength))) {
-			throw new IllegalArgumentException("2 ~ 4 글짜");
+		String pattern = "^[가-힣]{2,4}$";
+
+		if (!name.matches(pattern)) {
+			throw new IllegalArgumentException("이름은 한글, 2~4글자만 가능합니다.");
 		}
 		return name;
 	}
+
+//	public String inputName() {
+//		String name = StudentUtils.nextLine("이름 > ");
+//		String krChar = "[가-힣]*";
+//		String nameLength = "[가-힣]{2,4}";
+//		if(!(name.matches(nameLength))) {
+//			throw new IllegalArgumentException("이름은 한글로 구성되어야합니다");
+//		}
+//		else if(!(name.matches(krChar))) {
+//			throw new IllegalArgumentException("이름은 2~4글자로 입력하세요");
+//		}
+//		return name;
+//	}
 
 	// 수정
 	public void modify() {
@@ -116,12 +119,12 @@ public class StudentService {
 			System.out.println("입력된 학번이 존재하지 않습니다");
 			return;
 		}
-		String name = inputName();
-		s.setName(name);
+
+		s.setName(inputName());
 		s.setKor(checkRange("국어", StudentUtils.nextInt("국어 > ")));
 		s.setEng(checkRange("영어", StudentUtils.nextInt("영어 > ")));
 		s.setMat(checkRange("수학", StudentUtils.nextInt("수학 > ")));
-		
+
 		rank();
 	}
 
@@ -134,7 +137,7 @@ public class StudentService {
 			System.out.println("입력된 학번이 존재하지 않습니다");
 			return;
 		}
-
+		
 		for (int i = 0; i < students.size(); i++) {
 			if (students.get(i).getNo() == no) {
 				students.remove(i);
@@ -147,7 +150,7 @@ public class StudentService {
 
 	public void allAvg() {
 		// 국어, 영어, 수학, 전체평균
-		if (count == 0) {
+		if (students.size() == 0) {
 			System.out.println("등록된 학생이 없습니다.");
 			return;
 		}
@@ -159,18 +162,18 @@ public class StudentService {
 
 		// count
 
-		for (int i = 0; i < count; i++) {
+		for (int i = 0; i < students.size(); i++) {
 			avgKor += students.get(i).getKor();
 			avgEng += students.get(i).getEng();
 			avgMat += students.get(i).getMat();
 		}
-		avgKor /= (double) count;
-		avgEng /= (double) count;
-		avgMat /= (double) count;
+		avgKor /= (double) students.size();
+		avgEng /= (double) students.size();
+		avgMat /= (double) students.size();
 
 		avgAll = (avgKor + avgEng + avgMat) / 3;
 
-		System.out.println(count + "명의 학생 평균");
+		System.out.println(students.size() + "명의 학생 평균");
 		System.out.println("국어 평균 " + avgKor);
 		System.out.println("영어 평균 " + avgEng);
 		System.out.println("수학 평균 " + avgMat);
@@ -180,9 +183,9 @@ public class StudentService {
 
 	public void rank() {
 
-		for (int i = 0; i < count - 1; i++) {
+		for (int i = 0; i < students.size() - 1; i++) {
 			int idx = i;
-			for (int j = 1 + i; j < count; j++) {
+			for (int j = 1 + i; j < students.size(); j++) {
 				if (sortedStudents.get(idx).total() < sortedStudents.get(j).total()) {
 					idx = j;
 				}
