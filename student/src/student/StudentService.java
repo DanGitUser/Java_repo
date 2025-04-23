@@ -4,6 +4,7 @@ package student;
 //이름 검증 문자열 체크를 정규표현식을 사용
 
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
 
 public class StudentService {
@@ -21,7 +22,7 @@ public class StudentService {
 		rank();
 	}
 
-	public int randomScore() {
+	public static int randomScore() {
 		return (int) (Math.random() * 41 + 60);
 	}
 
@@ -116,7 +117,6 @@ public class StudentService {
 		System.out.println("삭제 기능");
 		int no = StudentUtils.nextInt("삭제할 학생의 학번 > ");
 		Student s = findBy(no);
-		students.remove(s);
 		if (s == null) {
 			System.out.println("입력된 학번이 존재하지 않습니다");
 			return;
@@ -131,49 +131,24 @@ public class StudentService {
 			System.out.println("등록된 학생이 없습니다.");
 			return;
 		}
-		students.stream().map(s -> s.getKor()).reduce(0, Integer :: sum);
-		students.stream().map(s -> s.getEng()).reduce(0, Integer :: sum);
-		students.stream().map(s -> s.getMat()).reduce(0, Integer :: sum);
 
-		double avgKor = 0;
-		double avgEng = 0;
-		double avgMat = 0;
-		double avgAll = 0;
-
-		// count
 		int size = students.size();
-		for (Student student : students) {
-			avgKor += student.getKor();
-			avgEng += student.getEng();
-			avgMat += student.getMat();
-		}
-		avgKor /= (double) size;
-		avgEng /= (double) size;
-		avgMat /= (double) size;
 
-		avgAll = (avgKor + avgEng + avgMat) / 3;
+		double avgKor = students.stream().map(s -> s.getKor()).reduce(0, Integer::sum) / (double) size;
+		double avgEng = students.stream().map(s -> s.getEng()).reduce(0, Integer::sum) / (double) size;
+		double avgMat = students.stream().map(s -> s.getMat()).reduce(0, Integer::sum) / (double) size;
+		double avgAll = (avgKor + avgEng + avgMat) / 3d;
 
-		System.out.println(size + " 명의 학생 평균");
-		System.out.println("국어 평균 " + avgKor);
-		System.out.println("영어 평균 " + avgEng);
-		System.out.println("수학 평균 " + avgMat);
-		System.out.println("전체 평균 " + avgAll);
+		System.out.println(students.size() + " 명의 학생 평균");
+		System.out.printf("국어 평균: %.2f\n", avgKor);
+		System.out.printf("영어 평균: %.2f\n", avgEng);
+		System.out.printf("수학 평균: %.2f\n", avgMat);
+		System.out.printf("전체 평균: %.2f\n", avgAll);
 
 	}
 
 	public void rank() {
-
-		for (int i = 0; i < sortedStudents.size() - 1; i++) {
-			int idx = i;
-			for (int j = 1 + i; j < sortedStudents.size(); j++) {
-				if (sortedStudents.get(idx).total() < sortedStudents.get(j).total()) {
-					idx = j;
-				}
-			}
-			Student tmp = sortedStudents.get(i);
-			sortedStudents.set(i, sortedStudents.get(idx));
-			sortedStudents.set(idx, tmp);
-		}
+		sortedStudents.sort((s1, s2) -> s2.total() - s1.total());
 	}
 
 }

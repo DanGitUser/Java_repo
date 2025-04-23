@@ -40,7 +40,7 @@ public class SortEx2 {
 		l.sort((o1, o2) -> {
 			return o2 - o1;
 		});
-		
+
 		l.sort((o1, o2) -> o2 - o1);
 	}
 }

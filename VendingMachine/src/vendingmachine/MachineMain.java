@@ -4,11 +4,11 @@ public class MachineMain {
 	public static void main(String[] args) {
 		
 		MachineService service = new MachineService();
-		System.out.println("================== 학생 점수 관리 프로그램 ==================");
+		System.out.println("================== 왭 스토어 관리 프로그램 ==================");
 
 		for (;;) {
 			try {
-				int choice = MachineUtil.nextInt("\n1. 등록 2. 조회 3. 수정 4. 삭제 5. 과목별 평균\n6. 석차순 조회 7. 종료 > ");
+				int choice = MachineUtil.nextInt("\n1. 등록 2. 조회 3. 수정 4. 삭제 5. 구매 순위 조회 6. 종료 > ");
 				switch (choice) {
 				case 1:
 					service.register();
@@ -23,12 +23,9 @@ public class MachineMain {
 					service.remove();
 					break;
 				case 5:
-					service.allAvg();
+					service.topSale();
 					break;
 				case 6:
-					service.readOrder();
-					break;
-				case 7:
 					System.out.println("Bye~!");
 					return;
 				default:
