@@ -1,0 +1,55 @@
+package lesson13_2;
+
+import java.util.Set;
+import java.util.TreeSet;
+
+public class SortEx {
+	public static void main(String[] args) {
+		String str1 = "AAA";
+		String str2 = "AA";
+		//Its the the positive and negative that matters, 
+		//IF greater, positive
+		//IF lower, negative
+		
+		System.out.println(str1.compareTo(str2));
+		
+		Integer i = 10;
+		System.out.println(Integer.compare(10, 20));
+		
+		Set<Data> set = new TreeSet<Data>();
+		set.add(new Data(5, "A"));
+		set.add(new Data(3, "A"));
+		set.add(new Data(1, "A"));
+		set.add(new Data(2, "A"));
+		set.add(new Data(4, "A"));
+		System.out.println(set);
+	}
+}
+
+class Data implements Comparable<Data>{
+	int i;
+	String name;
+	public Data(int i, String name) {
+		super();
+		this.i = i;
+		this.name = name;
+	}
+	
+	@Override
+	public int compareTo(Data o) {
+//		return -(i - o.i);
+//		return Integer.compare(i, o.i);	
+		
+		int ret = 0;
+		ret = this.i - o.i;
+		if (ret == 0) {
+			return -name.compareTo(o.name);
+		}
+		return ret;			
+	}
+	@Override
+	public String toString() {
+		return String.format("Data [i=%s, name=%s]", i, name);
+	}
+	
+}

@@ -9,7 +9,7 @@ import java.util.List;
 public class StudentService {
 
 	private List<Student> students = new ArrayList<Student>();
-	private List<Student> sortedStudents = new ArrayList<Student>();
+	private List<Student> sortedStudents;
 
 	{
 		students.add(new Student(1, "개똥이", randomScore(), randomScore(), randomScore()));
@@ -17,7 +17,7 @@ public class StudentService {
 		students.add(new Student(3, "말똥이", randomScore(), randomScore(), randomScore()));
 		students.add(new Student(4, "소똥이", randomScore(), randomScore(), randomScore()));
 
-		sortedStudents.addAll(students);
+		sortedStudents = new ArrayList<Student>(students);
 		rank();
 	}
 
@@ -81,34 +81,17 @@ public class StudentService {
 	}
 
 	public void print(List<Student> stu) {
-		for (Student student : stu) {
-			System.out.println(student);
-		}
+		stu.forEach(s -> System.out.println(s));
 	}
 
 	// 이름 검증 문자열 체크를 정규표현식을 사용
 	public String inputName() {
 		String name = StudentUtils.nextLine("이름 > ");
-		String pattern = "^[가-힣]{2,4}$";
-
-		if (!name.matches(pattern)) {
+		if (!name.matches("^[가-힣]{2,4}$")) {
 			throw new IllegalArgumentException("이름은 한글, 2~4글자만 가능합니다.");
 		}
 		return name;
 	}
-
-//	public String inputName() {
-//		String name = StudentUtils.nextLine("이름 > ");
-//		String krChar = "[가-힣]*";
-//		String nameLength = "[가-힣]{2,4}";
-//		if(!(name.matches(nameLength))) {
-//			throw new IllegalArgumentException("이름은 한글로 구성되어야합니다");
-//		}
-//		else if(!(name.matches(krChar))) {
-//			throw new IllegalArgumentException("이름은 2~4글자로 입력하세요");
-//		}
-//		return name;
-//	}
 
 	// 수정
 	public void modify() {
@@ -133,19 +116,13 @@ public class StudentService {
 		System.out.println("삭제 기능");
 		int no = StudentUtils.nextInt("삭제할 학생의 학번 > ");
 		Student s = findBy(no);
+		students.remove(s);
 		if (s == null) {
 			System.out.println("입력된 학번이 존재하지 않습니다");
 			return;
 		}
-		
-		for (int i = 0; i < students.size(); i++) {
-			if (students.get(i).getNo() == no) {
-				students.remove(i);
-				System.out.println("학생이 성공적으로 삭제되었습니다.");
-				break;
-			}
-		}
-		rank();
+		students.remove(s);
+		sortedStudents.remove(s);
 	}
 
 	public void allAvg() {
@@ -154,6 +131,9 @@ public class StudentService {
 			System.out.println("등록된 학생이 없습니다.");
 			return;
 		}
+		students.stream().map(s -> s.getKor()).reduce(0, Integer :: sum);
+		students.stream().map(s -> s.getEng()).reduce(0, Integer :: sum);
+		students.stream().map(s -> s.getMat()).reduce(0, Integer :: sum);
 
 		double avgKor = 0;
 		double avgEng = 0;
@@ -161,31 +141,31 @@ public class StudentService {
 		double avgAll = 0;
 
 		// count
-
-		for (int i = 0; i < students.size(); i++) {
-			avgKor += students.get(i).getKor();
-			avgEng += students.get(i).getEng();
-			avgMat += students.get(i).getMat();
+		int size = students.size();
+		for (Student student : students) {
+			avgKor += student.getKor();
+			avgEng += student.getEng();
+			avgMat += student.getMat();
 		}
-		avgKor /= (double) students.size();
-		avgEng /= (double) students.size();
-		avgMat /= (double) students.size();
+		avgKor /= (double) size;
+		avgEng /= (double) size;
+		avgMat /= (double) size;
 
 		avgAll = (avgKor + avgEng + avgMat) / 3;
 
-		System.out.println(students.size() + "명의 학생 평균");
+		System.out.println(size + " 명의 학생 평균");
 		System.out.println("국어 평균 " + avgKor);
 		System.out.println("영어 평균 " + avgEng);
 		System.out.println("수학 평균 " + avgMat);
-		System.out.println("전체 평균" + avgAll);
+		System.out.println("전체 평균 " + avgAll);
 
 	}
 
 	public void rank() {
 
-		for (int i = 0; i < students.size() - 1; i++) {
+		for (int i = 0; i < sortedStudents.size() - 1; i++) {
 			int idx = i;
-			for (int j = 1 + i; j < students.size(); j++) {
+			for (int j = 1 + i; j < sortedStudents.size(); j++) {
 				if (sortedStudents.get(idx).total() < sortedStudents.get(j).total()) {
 					idx = j;
 				}
