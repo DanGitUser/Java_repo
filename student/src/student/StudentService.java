@@ -4,8 +4,10 @@ package student;
 //이름 검증 문자열 체크를 정규표현식을 사용
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
+import java.util.TreeSet;
 
 public class StudentService {
 
@@ -13,13 +15,38 @@ public class StudentService {
 	private List<Student> sortedStudents;
 
 	{
-		students.add(new Student(1, "개똥이", randomScore(), randomScore(), randomScore()));
-		students.add(new Student(2, "새똥이", randomScore(), randomScore(), randomScore()));
-		students.add(new Student(3, "말똥이", randomScore(), randomScore(), randomScore()));
-		students.add(new Student(4, "소똥이", randomScore(), randomScore(), randomScore()));
-
+		students.add(Student.builder().no(1).name("개똥이")
+				.kor(randomScore())
+				.eng(randomScore())
+				.mat(randomScore())
+				.build());	
+		students.add(Student.builder().no(1).name("새똥이")
+				.kor(randomScore())
+				.eng(randomScore())
+				.mat(randomScore())
+				.build());
+		students.add(Student.builder().no(1).name("말똥이")
+				.kor(randomScore())
+				.eng(randomScore())
+				.mat(randomScore())
+				.build());
+		students.add(Student.builder().no(1).name("소똥이")
+				.kor(randomScore())
+				.eng(randomScore())
+				.mat(randomScore())
+				.build());
+		
 		sortedStudents = new ArrayList<Student>(students);
 		rank();
+	}
+	
+	
+	private static StudentService studentService = new StudentService();
+	private StudentService() {
+		
+	}
+	public static StudentService getInstance() {
+		return studentService;
 	}
 
 	public static int randomScore() {
@@ -144,10 +171,13 @@ public class StudentService {
 		System.out.printf("영어 평균: %.2f\n", avgEng);
 		System.out.printf("수학 평균: %.2f\n", avgMat);
 		System.out.printf("전체 평균: %.2f\n", avgAll);
-
 	}
 
 	public void rank() {
+		if (students.size() == 0) {
+			System.out.println("등록된 학생이 없습니다.");
+			return;
+		}
 		sortedStudents.sort((s1, s2) -> s2.total() - s1.total());
 	}
 

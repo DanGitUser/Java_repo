@@ -11,7 +11,7 @@ public class StudentUtils {
     
 	public static String nextLine(String msg) {
 		System.out.print(msg);
-		return scanner.nextLine();
+		return scanner.next();
 	}
 	
 	public static int nextInt(String msg) {
