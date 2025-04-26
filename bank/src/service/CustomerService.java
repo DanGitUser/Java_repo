@@ -23,13 +23,11 @@ public class CustomerService {
 		customers.add(new Customer(1, "새똥이", "010-1111-2222", "ssa@gmail.com", "ssa", "1234"));
 	}
 	
-	public Customer getLoginCustomer() {
-		return loginCustomer;
-	}
 	
 	public void register() {
 		System.out.println("Register");
 	}
+	
 	public void login() {
 		String id = BankUtils.nextLine("ID > ");
 		String pw = BankUtils.nextLine("PW > ");
@@ -39,6 +37,7 @@ public class CustomerService {
 			if (c.getId().equals(id) && c.getPw().equals(pw)) {
 				flag = true;
 				loginCustomer = c;
+				System.out.println("Login Success");
 				break;
 			}
 		}
@@ -46,6 +45,11 @@ public class CustomerService {
 			System.out.println("ID or PW is Wrong");
 		}
 	}
+	
+	public Customer getLoginCustomer() {
+		return loginCustomer;
+	}
+	
 	public void logout() {
 		loginCustomer = null;
 		System.out.println("Logout Success");

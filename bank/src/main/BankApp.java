@@ -5,6 +5,7 @@ import utils.BankUtils;
 
 public class BankApp {
 	public static void main(String[] args) {
+//		BankService service = BankService.getInstance();
 		while(true) {
 			System.out.println("=======================================================");
 			System.out.println(""

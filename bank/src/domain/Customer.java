@@ -93,18 +93,14 @@ public class Customer {
 		this.pw = pw;
 	}
 
-	
-
-
 	@Override
 	public String toString() {
 		return String.format("Customer [no=%s, name=%s, tel=%s, email=%s, id=%s, pw=%s]", no, name, tel, email, id, pw);
 	}
-	
-	
+		
 	// 기본생성자
 	//모든 필드사용 생성자
 	
 	//getter/setter
-	
+
 }
