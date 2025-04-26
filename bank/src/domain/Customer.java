@@ -95,7 +95,7 @@ public class Customer {
 
 	@Override
 	public String toString() {
-		return String.format("Customer [no=%s, name=%s, tel=%s, email=%s, id=%s, pw=%s]", no, name, tel, email, id, pw);
+		return String.format("[name> %s, tel> %s, email> %s]", name, tel, email);
 	}
 		
 	// 기본생성자
