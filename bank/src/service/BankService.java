@@ -13,14 +13,21 @@ public class BankService {
 	
 	private CustomerService customerService = CustomerService.getInstance();
 	
+	public void exit() {
+		System.out.println("Thank you for using our services.");
+		System.exit(0);
+	}
+	
 	public void menu() {
 		if(customerService.getLoginCustomer() == null) {
-			int no = BankUtils.nextInt("1. Sign-Up\n2. Login");
+			int no = BankUtils.nextInt("1. Sign-Up\n2. Login\n3. Exit");
 			switch(no) {
 			case 1:
 				customerService.register(); break;
 			case 2:
 				customerService.login(); break;
+			case 3:
+				exit(); break;
 			default: System.out.println("Enter 1 ~ 3 only."); break;
 			}
 			

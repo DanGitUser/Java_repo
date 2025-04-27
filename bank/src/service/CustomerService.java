@@ -121,9 +121,8 @@ public class CustomerService {
 	}
 	
 	public void remove() {
-		Customer c = findById(loginCustomer.getId());
 		if(BankUtils.nextConfirm("Delete User? (y/n)")) {
-			customers.remove(c);
+			customers.remove(findById(loginCustomer.getId()));
 			System.out.println("Deleted Successful");
 			loginCustomer = null;		
 		}		
