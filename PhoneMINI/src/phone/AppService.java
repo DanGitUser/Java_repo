@@ -1,3 +1,4 @@
+
 package phone;
 
 import static java.util.Calendar.DATE;
@@ -34,7 +35,7 @@ public class AppService {
 	public static void displayCurrentTime() {
 		SimpleDateFormat sdf = new SimpleDateFormat("HH:mm:ss");
         String currentTime = sdf.format(new Date());
-        System.out.println("Current Time: " + currentTime);
+        System.out.println(currentTime);
 	}
 	
 	

@@ -1,20 +1,31 @@
 package student;
 
-//학생 예제 내의 배열을 리스토로
-//이름 검증 문자열 체크를 정규표현식을 사용
-
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.Comparator;
 import java.util.List;
-import java.util.TreeSet;
 
+@SuppressWarnings("unchecked")
 public class StudentService {
 
 	private List<Student> students = new ArrayList<Student>();
 	private List<Student> sortedStudents;
 
 	{
+		ObjectInputStream ois = null;
+		try {
+			ois = new ObjectInputStream(new FileInputStream("data/student.ser"));
+			students = (List<Student>)ois.readObject();
+			ois.close();
+		}
+		catch(FileNotFoundException e) {
+			System.out.println("File Not Found, Applying Temp Data");
 		students.add(Student.builder().no(1).name("개똥이")
 				.kor(randomScore())
 				.eng(randomScore())
@@ -35,16 +46,17 @@ public class StudentService {
 				.eng(randomScore())
 				.mat(randomScore())
 				.build());
-		
+		} 
+		catch (Exception e) {
+			e.printStackTrace();
+		}	
 		sortedStudents = new ArrayList<Student>(students);
 		rank();
 	}
 	
 	
 	private static StudentService studentService = new StudentService();
-	private StudentService() {
-		
-	}
+	private StudentService() {}
 	public static StudentService getInstance() {
 		return studentService;
 	}
@@ -53,9 +65,7 @@ public class StudentService {
 		return (int) (Math.random() * 41 + 60);
 	}
 
-	// 입력 : 학번
-	// 출력 : 학생
-	Student findBy(int no) { // what dad keeps saying
+	Student findBy(int no) {
 		for (Student student : students) {
 			if (student.getNo() == no) {
 				return student;
@@ -95,6 +105,7 @@ public class StudentService {
 		students.add(newStudent);
 		sortedStudents.add(newStudent);
 		rank();
+		save();
 	}
 
 	// 조회
@@ -137,6 +148,7 @@ public class StudentService {
 		s.setMat(checkRange("수학", StudentUtils.nextInt("수학 > ")));
 
 		rank();
+		save();
 	}
 
 	// 삭제
@@ -150,6 +162,7 @@ public class StudentService {
 		}
 		students.remove(s);
 		sortedStudents.remove(s);
+		save();
 	}
 
 	public void allAvg() {
@@ -178,7 +191,24 @@ public class StudentService {
 			System.out.println("등록된 학생이 없습니다.");
 			return;
 		}
+//		Collections.sort(sortedStudents, (o1, o2) -> o2.total() - o1.total());
 		sortedStudents.sort((s1, s2) -> s2.total() - s1.total());
+	}
+	
+	private void save() {
+		try {
+			File file = new File("data");
+			if (!file.canExecute()) {
+				file.mkdirs(); //folder generation
+			}
+			ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(new File(file, "student.ser")));
+			oos.writeObject(students);
+			oos.close();
+		} 
+		catch (IOException e) {
+			System.out.println("Restricted File Access");
+			e.printStackTrace();
+		}
 	}
 
 }

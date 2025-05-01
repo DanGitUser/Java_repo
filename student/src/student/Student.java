@@ -1,6 +1,8 @@
 package student;
 
-public class Student implements Comparable {
+import java.io.Serializable;
+
+public class Student implements Comparable<Student>, Serializable {
 	// How to use get and set
 	// 1. field
 	// 2. constructor
@@ -128,11 +130,5 @@ public class Student implements Comparable {
 				.builder()
 				.no(1).name("새똥이").kor(90)
 				.build();
-	}
-
-	@Override
-	public int compareTo(Object o) {
-		// TODO Auto-generated method stub
-		return 0;
 	}
 }
