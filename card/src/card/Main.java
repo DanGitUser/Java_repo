@@ -5,8 +5,9 @@ import java.util.List;
 
 public class Main {
 	public static void main(String[] args) {
-		play();
-		System.getProperties();
+		Card card = new Card(0, 0);
+//		play();
+//		System.getProperties();
 	}
 	
 	static void play() {

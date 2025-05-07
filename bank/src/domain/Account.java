@@ -16,16 +16,14 @@ public class Account {
 	//개설일
 	private Date date;
 	
-	public Account() {}	
-	
-	public Account(int no, long amount, Customer customer, String pw, long limit, Date date) {
+	public Account(int no, Customer customer, String pw) {
 		super();
 		this.no = no;
 		this.amount = amount;
 		this.customer = customer;
 		this.pw = pw;
 		this.limit = limit;
-		this.date = date;
+		this.date = new Date();
 	}
 
 	public int getNo() {

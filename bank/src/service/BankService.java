@@ -12,6 +12,7 @@ public class BankService {
 	}
 	
 	private CustomerService customerService = CustomerService.getInstance();
+	private  AccountService accountService = AccountService.getInstance();
 	
 	public void exit() {
 		System.out.println("Thank you for using our services.");
@@ -36,7 +37,10 @@ public class BankService {
 		else {
 			Customer customer = customerService.getLoginCustomer();
 			System.out.println("Current User : " + customer.getName());
-			int no = BankUtils.nextInt("1. Customer Info\n2. Modify User Info\n3. Delete User\n7. Logout");
+			int no = BankUtils.nextInt(""
+					+ "1. Customer Info\n2. Modify User Info\n3. Delete User\n"
+					+ "4. Open Account\n5. Deposit\n6. Withdraw\n7. Transfer\n"
+					+ "8. Close Account\n9. Logout");
 			switch(no) {
 				case 1:
 					customerService.info(); break;
@@ -44,12 +48,17 @@ public class BankService {
 					customerService.modify(); break;
 				case 3:
 					customerService.remove(); break;
-//					bankService.deposit(); break;
-//				case 3:
-//					bankService.withdraw(); break;
-//				case 4:
-//					bankService.checkBalance(); break;
+				case 4:
+					accountService.open(); break;
+				case 5:
+					accountService.deposit(); break;
+				case 6:
+					accountService.withdraw(); break;
 				case 7:
+					accountService.transfer(); break;
+				case 8:
+					accountService.close(); break;
+				case 9:
 					customerService.logout(); break;
 			}
 		}	
