@@ -125,6 +125,10 @@ public class Student implements Comparable<Student>, Serializable {
 		this.mat = builder.mat;
 	}
 
+	public Student(int i, String string) {
+		// TODO Auto-generated constructor stub
+	}
+
 	public static void main(String[] args) {
 		Student student = Student
 				.builder()
